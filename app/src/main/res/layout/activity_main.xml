@@ -32,16 +32,18 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/generate_btn"
-            android:layout_width="wrap_content"
+            style="@style/MainButtonStyle"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:text="Generate" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_btn"
+            style="@style/MainButtonStyle"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/bg_light_gray_yellow_round"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:text="Generate"
-            android:textAllCaps="false"
-            android:textSize="20dp" />
+            android:text="Save" />
 
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MainButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_light_gray_yellow_round</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">150dp</item>
+    </style>
+
+    <style name="DialogButtonStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/light_gray_blue</item>
+        <item name="android:background">@drawable/ripple_light_gray_blue</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingVertical">10dp</item>
+    </style>
+</resources>
