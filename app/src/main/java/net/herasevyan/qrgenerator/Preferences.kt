@@ -18,7 +18,7 @@ class SharedPrefs(private val sharedPreferences: SharedPreferences) : SharedPref
         }
     }
 
-    fun safe(key: String, item: Float) {
+    fun save(key: String, item: Float) {
         with(edit()) {
             putFloat(key, item)
             apply()
