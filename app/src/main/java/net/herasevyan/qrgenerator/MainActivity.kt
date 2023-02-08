@@ -25,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         private const val ANIMATION_DURATION = 200L
 
         private const val EXTERNAL_STORAGE_PERMISSION_DENIED_TIMES = "external_storage_permission_denied_times"
+        private const val LAST_GENERATED_QR_TEXT = "last_generated_qr_text"
     }
 
-    private val qrGenerator = QrGenerator(this)
-    private val imageStorage = ImageStorage()
+    private lateinit var qrGenerator: QrGenerator
+    private lateinit var imageStorage: ImageStorage
     private lateinit var sharedPrefs: SharedPrefs
 
     private lateinit var binding: ActivityMainBinding
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        qrGenerator = QrGenerator(applicationContext)
+        imageStorage = ImageStorage(applicationContext)
         sharedPrefs = SharedPrefs(getSharedPreferences("prefs", MODE_PRIVATE))
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
@@ -57,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 val text = strEt.text.toString()
                 saveBtn.isEnabled = text.isNotEmpty() && sharedPrefs.getInt(EXTERNAL_STORAGE_PERMISSION_DENIED_TIMES, 0) < 2
                 qrImg.setQrBitmap(text)
+                sharedPrefs.save(LAST_GENERATED_QR_TEXT, text)
                 strEt.setText("")
             }
 
@@ -101,7 +105,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun saveImage() {
         binding.saveBtn.isEnabled = false
-        imageStorage.save(applicationContext, qrGenerator.readLast())
+        val defaultName = "${System.currentTimeMillis()}"
+        val name = sharedPrefs.getString(LAST_GENERATED_QR_TEXT, defaultName) ?: defaultName
+        imageStorage.save(name, qrGenerator.readLast())
         Toast.makeText(this, "Image was saved", Toast.LENGTH_SHORT).show()
     }
 
