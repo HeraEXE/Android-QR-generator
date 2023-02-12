@@ -15,11 +15,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.children
+import by.kirich1409.viewbindingdelegate.viewBinding
 import net.herasevyan.qrgenerator.databinding.ActivityMainBinding
 import java.io.FileNotFoundException
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     companion object {
         private const val ANIMATION_DURATION = 200L
@@ -32,9 +34,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageStorage: ImageStorage
     private lateinit var sharedPrefs: SharedPrefs
 
-    private lateinit var binding: ActivityMainBinding
+    private val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::bind, R.id.scroll_view)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         qrGenerator = QrGenerator(applicationContext)
@@ -42,9 +45,6 @@ class MainActivity : AppCompatActivity() {
         sharedPrefs = SharedPrefs(getSharedPreferences("prefs", MODE_PRIVATE))
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         with(binding) {
             hideKeyboardOnTouch(root)
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         val defaultName = "${System.currentTimeMillis()}"
         val name = sharedPrefs.getString(LAST_GENERATED_QR_TEXT, defaultName) ?: defaultName
         imageStorage.save(name, qrGenerator.readLast())
-        Toast.makeText(this, "Image was saved", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.toast_image_saved, Toast.LENGTH_SHORT).show()
     }
 
     private fun View.hideKeyboard() {

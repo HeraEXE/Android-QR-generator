@@ -45,7 +45,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    // QR generator
     def qr_generator_version = "3.3.0"
     implementation "io.github.g0dkar:qrcode-kotlin-android:$qr_generator_version"
+
+    def viewbinding_pd_version = "1.5.8"
+    implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$viewbinding_pd_version"
+
+    def splash_version = "1.0.0"
+    implementation "androidx.core:core-splashscreen:$splash_version"
 }

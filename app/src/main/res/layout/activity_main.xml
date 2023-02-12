@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_view"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,7 +36,7 @@
             style="@style/MainButtonStyle"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Generate" />
+            android:text="@string/btn_generate" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_btn"
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp"
-            android:text="Save" />
+            android:text="@string/btn_save" />
 
     </LinearLayout>
 </ScrollView>

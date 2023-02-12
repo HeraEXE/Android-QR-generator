@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">QR generator</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dialog_message_permission_external_storage">Without this permission you will not be able to save generated QR codes. Do you want to permit access to external storage?</string>
+    <string name="btn_generate">Generate</string>
+    <string name="btn_save">Save</string>
+    <string name="toast_image_saved">Image was saved</string>
 </resources>

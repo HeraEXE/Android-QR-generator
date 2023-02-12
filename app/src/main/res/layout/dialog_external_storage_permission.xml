@@ -17,9 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:text="Without this permission you will not be able to save generated QR codes, do you want to permit access to external storage?"
+        android:text="@string/dialog_message_permission_external_storage"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <View
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="yes" />
+            android:text="@string/yes" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/no_btn"
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="no" />
+            android:text="@string/no" />
 
     </LinearLayout>
 
